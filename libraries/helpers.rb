@@ -18,6 +18,7 @@
 # limitations under the License.
 
 require 'chef/mixin/shell_out'
+require 'chef/resources'
 
 module Opscode
   module ChefClient
