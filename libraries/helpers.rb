@@ -18,6 +18,7 @@
 # limitations under the License.
 
 require 'chef/mixin/shell_out'
+require 'chef/resource'
 
 module Opscode
   module ChefClient
@@ -25,7 +26,6 @@ module Opscode
     module Helpers
       include Chef::DSL::PlatformIntrospection
       include Chef::Mixin::ShellOut
-      include Chef::Recipe
 
       def wmi_property_from_query(wmi_property, wmi_query)
         @wmi = ::WIN32OLE.connect('winmgmts://')
