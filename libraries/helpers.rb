@@ -18,7 +18,6 @@
 # limitations under the License.
 
 require 'chef/mixin/shell_out'
-require 'chef/resource'
 
 module Opscode
   module ChefClient
@@ -48,7 +47,8 @@ module Opscode
         %w(run_path cache_path backup_path log_dir conf_dir).each do |dir|
           # Do not redefine the resource if it exist
           begin
-            resources(directory: node['chef_client'][dir])
+            run_context.resource_collection.find(directory: node['chef_client'][dir])
+            # resources(directory: node['chef_client'][dir])
           rescue Chef::Exceptions::ResourceNotFound
             directory node['chef_client'][dir] do
               recursive true
